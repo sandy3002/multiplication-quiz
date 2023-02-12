@@ -31,6 +31,11 @@ body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+.btn span{
+    position: relative;
+    z-index: 1;
+}
+
 .btn{
     background-color: darksalmon;
     border: none;
@@ -42,11 +47,31 @@ body {
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
 }
 
-.btn:hover {
-    filter: brightness(0.9);
+
+.btn::before{
+    content: "";
+    position: absolute;
+    background-color: orangered;
+    width: 0;
+    height: 0;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+    transition: width .5s ,height .8s;
 }
+
+.btn:hover::before{
+    filter: brightness(0.9);
+    width: 600px;
+    height: 300px;
+
+}
+
 
 .score {
     color: dimgray;
